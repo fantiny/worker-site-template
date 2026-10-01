@@ -1,0 +1,53 @@
+/* 瑞士极简:SiteInspire 编辑风
+   纯白黑 + 单一红色强调 + 直角 + 细分隔线 + 紧凑大标题,零装饰零阴影 */
+html[data-theme="swiss"] {
+  --app-base: #ffffff;
+  --app-surface: #ffffff;
+  --app-raised: #f4f4f3;
+  --app-line: #111111;
+  --app-ink: #111111;
+  --app-ink-muted: #55555a;
+  --app-brand: #e63329;
+  --app-brand-strong: #c21f16;
+  --app-onbrand: #ffffff;
+  --app-accent: #111111;
+  --app-radius: 0px;
+  --app-font-display: "Helvetica Neue", Helvetica, "PingFang SC",
+    "Microsoft YaHei", Arial, sans-serif;
+  --app-font-body: "Helvetica Neue", Helvetica, "PingFang SC",
+    "Microsoft YaHei", Arial, sans-serif;
+  --app-shadow-card: none;
+  --app-shadow-pop: none;
+  --app-display-weight: 700;
+  --app-display-leading: 1.1;
+  --app-card-blur: none;
+  color-scheme: light;
+}
+
+/* 干净背景,仅顶部一条红色书口线 */
+html[data-theme="swiss"] body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--app-brand);
+}
+
+/* 瑞士风:标题紧字距、分隔线即边框 */
+html[data-theme="swiss"] h1,
+html[data-theme="swiss"] h2 {
+  letter-spacing: -0.02em;
+}
+html[data-theme="swiss"] .border,
+html[data-theme="swiss"] .border-line {
+  border-color: #e4e4e1;
+}
+html[data-theme="swiss"] .border-l-2,
+html[data-theme="swiss"] .border-t,
+html[data-theme="swiss"] .border-b {
+  border-color: #111111;
+}

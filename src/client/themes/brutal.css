@@ -1,0 +1,58 @@
+/* 新粗野主义 Neubrutalism:高饱和撞色
+   奶油底 + 2px 黑描边 + 硬投影(无模糊) + 蓝粉黄三撞色 */
+html[data-theme="brutal"] {
+  --app-base: #fdf3e0;
+  --app-surface: #ffffff;
+  --app-raised: #ffe8c2;
+  --app-line: #111111;
+  --app-ink: #111111;
+  --app-ink-muted: #4d4a45;
+  --app-brand: #4d6fff;
+  --app-brand-strong: #2f52e0;
+  --app-onbrand: #ffffff;
+  --app-accent: #ff5d8f;
+  --app-radius: 0.5rem;
+  --app-font-display: "Arial Black", "PingFang SC",
+    "Microsoft YaHei", Arial, sans-serif;
+  --app-font-body: "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", Arial, sans-serif;
+  --app-shadow-card: 4px 4px 0 0 #111111;
+  --app-shadow-pop: 7px 7px 0 0 #111111;
+  --app-display-weight: 900;
+  --app-display-leading: 1.1;
+  --app-card-blur: none;
+  color-scheme: light;
+}
+
+/* 硬边框:2px */
+html[data-theme="brutal"] .border {
+  border-width: 2px !important;
+}
+html[data-theme="brutal"] .border-t {
+  border-top-width: 2px !important;
+}
+html[data-theme="brutal"] .border-b {
+  border-bottom-width: 2px !important;
+}
+html[data-theme="brutal"] .border-l-2 {
+  border-left-width: 3px !important;
+}
+
+/* 标题全大写感觉的加粗 + 元素按下感 */
+html[data-theme="brutal"] h1 {
+  letter-spacing: 0.01em;
+}
+html[data-theme="brutal"] .bg-brand,
+html[data-theme="brutal"] button {
+  box-shadow: 3px 3px 0 0 #111111;
+}
+html[data-theme="brutal"] .bg-brand:hover {
+  box-shadow: 1px 1px 0 0 #111111;
+  transform: translate(2px, 2px);
+}
+html[data-theme="brutal"] .rounded-card {
+  border-radius: 0.5rem;
+}
+html[data-theme="brutal"] ::selection {
+  background: rgba(255, 216, 3, 0.6);
+}

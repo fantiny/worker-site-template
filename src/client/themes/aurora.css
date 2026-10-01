@@ -1,0 +1,57 @@
+/* 极光玻璃(默认):Awwwards 深空玻璃拟态
+   动态极光背景 + 半透明毛玻璃卡片 + 品牌渐变光晕 */
+:root,
+html[data-theme="aurora"] {
+  --app-base: #05070f;
+  --app-surface: rgba(148, 163, 255, 0.06);
+  --app-raised: rgba(148, 163, 255, 0.12);
+  --app-line: rgba(148, 163, 255, 0.18);
+  --app-ink: #eef1ff;
+  --app-ink-muted: #99a2c9;
+  --app-brand: #7c8cff;
+  --app-brand-strong: #a5adff;
+  --app-onbrand: #0a0d1f;
+  --app-accent: #4be0c8;
+  --app-radius: 1rem;
+  --app-font-display: "PingFang SC", "Hiragino Sans GB",
+    system-ui, sans-serif;
+  --app-font-body: "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", system-ui, sans-serif;
+  --app-shadow-card: inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 8px 32px rgba(2, 4, 18, 0.5);
+  --app-shadow-pop: 0 12px 48px rgba(124, 140, 255, 0.35);
+  --app-display-weight: 800;
+  --app-display-leading: 1.15;
+  --app-card-blur: blur(14px);
+  color-scheme: dark;
+}
+
+/* 极光:三团柔光缓慢漂移 */
+html:not([data-theme]) body::before,
+html[data-theme="aurora"] body::before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(42rem 30rem at 18% 12%, rgba(124, 140, 255, 0.32), transparent 65%),
+    radial-gradient(50rem 34rem at 85% 25%, rgba(75, 224, 200, 0.16), transparent 65%),
+    radial-gradient(46rem 36rem at 55% 90%, rgba(160, 100, 255, 0.22), transparent 65%);
+  animation: aurora-drift 22s ease-in-out infinite alternate;
+}
+@keyframes aurora-drift {
+  0% {
+    transform: translate3d(-3%, -2%, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(3%, 3%, 0) scale(1.08);
+  }
+}
+
+/* 毛玻璃卡片 */
+html[data-theme="aurora"] .bg-surface,
+html[data-theme="aurora"] header {
+  backdrop-filter: var(--app-card-blur);
+  -webkit-backdrop-filter: var(--app-card-blur);
+}

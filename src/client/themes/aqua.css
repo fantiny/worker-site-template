@@ -1,0 +1,190 @@
+/* 水色玻璃:Aqua Glass
+   参考柔和水色产品页美学:天空蓝渐变底 + 白色毛玻璃面板 +
+   漂浮的玻璃/木质几何体 + 柔光光斑,大圆角、软阴影、干净留白 */
+html[data-theme="aqua"] {
+  --app-base: #a9cdf1;
+  --app-surface: rgba(255, 255, 255, 0.6);
+  --app-raised: rgba(255, 255, 255, 0.82);
+  --app-line: rgba(255, 255, 255, 0.8);
+  --app-ink: #1d2e40;
+  --app-ink-muted: #4a5f75;
+  --app-brand: #2f6bde;
+  --app-brand-strong: #2458c2;
+  --app-onbrand: #ffffff;
+  --app-accent: #e8794a;
+  --app-radius: 1.25rem;
+  --app-font-display: 700 1em/1.15 "PingFang SC", "Hiragino Sans GB",
+    system-ui, sans-serif;
+  --app-font-body: 400 1em/1.7 "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", system-ui, sans-serif;
+  --app-display-weight: 700;
+  --app-display-leading: 1.15;
+  --app-shadow-card: 0 8px 32px rgba(38, 84, 158, 0.16);
+  --app-shadow-pop: 0 16px 48px rgba(38, 84, 158, 0.26);
+  --app-card-blur: blur(16px);
+  color-scheme: light;
+}
+
+/* 天空渐变 + 顶部柔光 */
+html[data-theme="aqua"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 36rem at 50% -12%, rgba(255, 255, 255, 0.75), transparent 70%),
+    linear-gradient(180deg, #c3ddf7 0%, #a9cdf1 45%, #8db9e9 100%);
+}
+
+/* 毛玻璃面板与头部 */
+html[data-theme="aqua"] .bg-surface,
+html[data-theme="aqua"] header {
+  backdrop-filter: var(--app-card-blur);
+  -webkit-backdrop-filter: var(--app-card-blur);
+}
+html[data-theme="aqua"] ::selection {
+  background: rgba(47, 107, 222, 0.28);
+}
+
+/* ============ 装饰场景(AquaScene 组件渲染) ============ */
+html[data-theme="aqua"] .aqua-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+html[data-theme="aqua"] .aqua-scene i {
+  position: absolute;
+  display: block;
+}
+
+/* 柔光光斑 */
+html[data-theme="aqua"] .aqua-bokeh {
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 70%);
+  filter: blur(6px);
+  animation: aqua-drift 14s ease-in-out infinite alternate;
+}
+html[data-theme="aqua"] .aq-b1 { width: 34vmin; height: 34vmin; top: 6%; left: 4%; opacity: 0.8; }
+html[data-theme="aqua"] .aq-b2 { width: 26vmin; height: 26vmin; top: 14%; right: 8%; opacity: 0.6; animation-delay: -4s; }
+html[data-theme="aqua"] .aq-b3 { width: 18vmin; height: 18vmin; bottom: 30%; left: 12%; opacity: 0.5; animation-delay: -8s; }
+html[data-theme="aqua"] .aq-b4 { width: 40vmin; height: 40vmin; bottom: -8%; right: -4%; opacity: 0.7; animation-delay: -11s; }
+
+/* 几何体通用:缓慢漂浮 */
+html[data-theme="aqua"] .aq-shape {
+  animation: aqua-float 7s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* 木质圆环:左上角探出 */
+html[data-theme="aqua"] .aq-wood-ring {
+  width: 13vmin;
+  height: 13vmin;
+  left: -3vmin;
+  top: 14%;
+  border: 3.4vmin solid #d9c39a;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0.6vmin 1.2vmin rgba(120, 88, 40, 0.35),
+    0 2.4vmin 4vmin rgba(38, 84, 158, 0.22);
+  animation-duration: 9s;
+}
+/* 玻璃圆环(毛玻璃) */
+html[data-theme="aqua"] .aq-glass-ring {
+  width: 15vmin;
+  height: 15vmin;
+  right: -3vmin;
+  top: 10%;
+  border: 2.8vmin solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow:
+    inset 0 0 2vmin rgba(255, 255, 255, 0.7),
+    0 2.4vmin 4vmin rgba(38, 84, 158, 0.2);
+  animation-duration: 8s;
+  animation-delay: -3s;
+}
+/* 蓝色玻璃球 */
+html[data-theme="aqua"] .aq-sphere-blue {
+  width: 13vmin;
+  height: 13vmin;
+  right: -2.5vmin;
+  bottom: 22%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 28%, #cfe7ff 0%, #6ea7e0 48%, #2f6cb5 100%);
+  box-shadow:
+    inset -1vmin -1.4vmin 2.4vmin rgba(15, 50, 100, 0.35),
+    0 2.6vmin 4.2vmin rgba(38, 84, 158, 0.28);
+  animation-duration: 7.5s;
+  animation-delay: -2s;
+}
+/* 紫色玻璃球 */
+html[data-theme="aqua"] .aq-sphere-purple {
+  width: 10vmin;
+  height: 10vmin;
+  left: -2vmin;
+  bottom: 26%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 28%, #ecdcff 0%, #a488e2 50%, #6c4fb4 100%);
+  box-shadow:
+    inset -0.9vmin -1.2vmin 2vmin rgba(50, 25, 100, 0.35),
+    0 2.2vmin 3.8vmin rgba(38, 84, 158, 0.26);
+  animation-duration: 8.5s;
+  animation-delay: -5s;
+}
+/* 蜜桃磨砂球(带水珠点) */
+html[data-theme="aqua"] .aq-sphere-peach {
+  width: 10vmin;
+  height: 10vmin;
+  left: 3vmin;
+  top: 52%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 40% 28%, #ffe3d1 0%, #f4b088 55%, #dd8552 100%);
+  box-shadow:
+    inset -0.8vmin -1.1vmin 1.8vmin rgba(150, 70, 20, 0.3),
+    0 2.2vmin 3.8vmin rgba(38, 84, 158, 0.22);
+  animation-duration: 10s;
+  animation-delay: -6s;
+}
+/* 磨砂玻璃板 */
+html[data-theme="aqua"] .aq-slab {
+  width: 22vmin;
+  height: 11vmin;
+  left: -4vmin;
+  bottom: 4%;
+  opacity: 0.85;
+  border-radius: 1.2vmin;
+  background: rgba(255, 255, 255, 0.38);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 2.6vmin 4.4vmin rgba(38, 84, 158, 0.2);
+  animation-duration: 11s;
+  animation-delay: -4s;
+}
+
+@keyframes aqua-float {
+  from { transform: translateY(0) rotate(0deg); }
+  to   { transform: translateY(-2.2vmin) rotate(2.5deg); }
+}
+@keyframes aqua-drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(4vmin, 2.4vmin, 0) scale(1.08); }
+}
+
+/* 小屏收敛装饰,避免遮挡内容 */
+@media (max-width: 768px) {
+  html[data-theme="aqua"] .aq-shape { transform: scale(0.66); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme="aqua"] .aqua-bokeh,
+  html[data-theme="aqua"] .aq-shape {
+    animation: none !important;
+  }
+}

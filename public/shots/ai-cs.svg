@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef2ff"/>
+      <stop offset="1" stop-color="#fdf4ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="540" fill="url(#bg2)"/>
+  <!-- 三列工作台布局暗示 -->
+  <rect x="60" y="42" width="200" height="456" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="272" y="42" width="380" height="456" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="664" y="42" width="176" height="456" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <!-- 左列:会话列表 -->
+  <g font-family="PingFang SC, sans-serif">
+    <text x="80" y="72" fill="#334155" font-size="14" font-weight="600">会话队列</text>
+    <rect x="76" y="88" width="168" height="56" rx="8" fill="#eef2ff"/>
+    <text x="90" y="112" fill="#1e293b" font-size="13">李** · 订单咨询</text>
+    <text x="90" y="132" fill="#94a3b8" font-size="11">正在等待 · SLA 2m</text>
+    <rect x="76" y="152" width="168" height="56" rx="8" fill="#f8fafc"/>
+    <text x="90" y="176" fill="#1e293b" font-size="13">王** · 退款申请</text>
+    <text x="90" y="196" fill="#94a3b8" font-size="11">已认领 · 张三</text>
+    <rect x="76" y="216" width="168" height="56" rx="8" fill="#f8fafc"/>
+    <text x="90" y="240" fill="#1e293b" font-size="13">陈** · 商品推荐</text>
+    <text x="90" y="260" fill="#94a3b8" font-size="11">AI 接管中</text>
+  </g>
+
+  <!-- 中列:对话 -->
+  <g font-family="PingFang SC, sans-serif" font-size="14">
+    <text x="292" y="72" fill="#334155" font-size="14" font-weight="600">对话</text>
+    <rect x="292" y="92" width="220" height="44" rx="12" fill="#e2e8f0"/>
+    <text x="308" y="119" fill="#1e293b">我买的猫粮什么时候发货?</text>
+    <rect x="392" y="152" width="240" height="62" rx="12" fill="#4f46e5"/>
+    <text x="410" y="178" fill="#ffffff">已为您查询:订单 #A2031 今天</text>
+    <text x="410" y="198" fill="#ffffff">18:00 前发出,预计后天送达 🚚</text>
+    <rect x="292" y="230" width="150" height="28" rx="14" fill="#ede9fe"/>
+    <text x="312" y="249" fill="#6d28d9" font-size="12">意图:order_read</text>
+    <rect x="452" y="230" width="120" height="28" rx="14" fill="#f1f5f9"/>
+    <text x="470" y="249" fill="#64748b" font-size="12">RAG 命中 3 条</text>
+    <rect x="292" y="286" width="200" height="44" rx="12" fill="#e2e8f0"/>
+    <text x="308" y="313" fill="#1e293b">好的,帮我把地址改一下</text>
+    <rect x="392" y="346" width="240" height="44" rx="12" fill="#f8fafc" stroke="#fda4af"/>
+    <text x="410" y="366" fill="#be123c">⚠ 高风险操作:等待人工批准</text>
+    <text x="410" y="382" fill="#be123c" font-size="11">LangGraph interrupt · HITL</text>
+    <rect x="292" y="440" width="100" height="34" rx="8" fill="#4f46e5"/>
+    <text x="318" y="462" fill="#ffffff" font-size="13">接管会话</text>
+  </g>
+
+  <!-- 右列:质检 -->
+  <g font-family="PingFang SC, sans-serif">
+    <text x="684" y="72" fill="#334155" font-size="14" font-weight="600">质检面板</text>
+    <text x="684" y="104" fill="#64748b" font-size="12">混合检索</text>
+    <rect x="684" y="114" width="140" height="8" rx="4" fill="#e2e8f0"/>
+    <rect x="684" y="114" width="112" height="8" rx="4" fill="#4f46e5"/>
+    <text x="684" y="144" fill="#64748b" font-size="12">意图置信</text>
+    <rect x="684" y="154" width="140" height="8" rx="4" fill="#e2e8f0"/>
+    <rect x="684" y="154" width="98" height="8" rx="4" fill="#22c55e"/>
+    <text x="684" y="184" fill="#64748b" font-size="12">CSAT 满意度</text>
+    <text x="684" y="212" fill="#16a34a" font-size="20" font-weight="700">4.8 / 5</text>
+    <rect x="684" y="236" width="140" height="8" rx="4" fill="#e2e8f0"/>
+    <rect x="684" y="236" width="126" height="8" rx="4" fill="#22c55e"/>
+    <text x="684" y="280" fill="#64748b" font-size="12">今日会话</text>
+    <text x="684" y="308" fill="#0f172a" font-size="22" font-weight="700">132</text>
+    <text x="684" y="340" fill="#64748b" font-size="12">AI 独立解决</text>
+    <text x="684" y="368" fill="#0f172a" font-size="22" font-weight="700">87%</text>
+  </g>
+</svg>

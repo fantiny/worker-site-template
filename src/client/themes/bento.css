@@ -1,0 +1,45 @@
+/* 便当格 Neo-Bento:21st.dev 现代 SaaS
+   浅灰底 + 白色大圆角卡片 + 柔和大阴影 + 点阵背景 + 紫橙双强调 */
+html[data-theme="bento"] {
+  --app-base: #ededf0;
+  --app-surface: #ffffff;
+  --app-raised: #f6f6f8;
+  --app-line: #e3e3e8;
+  --app-ink: #141416;
+  --app-ink-muted: #63636b;
+  --app-brand: #6c5ce7;
+  --app-brand-strong: #5a49d6;
+  --app-onbrand: #ffffff;
+  --app-accent: #ff7a45;
+  --app-radius: 1.375rem;
+  --app-font-display: "SF Pro Rounded", "PingFang SC",
+    "Hiragino Sans GB", system-ui, sans-serif;
+  --app-font-body: "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", system-ui, sans-serif;
+  --app-shadow-card: 0 1px 2px rgba(20, 20, 22, 0.04),
+    0 8px 28px rgba(20, 20, 22, 0.07);
+  --app-shadow-pop: 0 16px 48px rgba(108, 92, 231, 0.28);
+  --app-display-weight: 800;
+  --app-display-leading: 1.15;
+  --app-card-blur: none;
+  color-scheme: light;
+}
+
+/* 点阵网格背景 */
+html[data-theme="bento"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(
+    rgba(20, 20, 22, 0.07) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* 双强调:链接与标签用紫,点缀用橙 */
+html[data-theme="bento"] ::selection {
+  background: rgba(108, 92, 231, 0.2);
+}

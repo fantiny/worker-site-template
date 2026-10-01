@@ -1,0 +1,106 @@
+/* 格斗战场:街霸6 黄黑斜切 × VALORANT 高饱和红
+   全屏斜纹战场 + 斜切卡片 + 斜体重型标题 + 按键式斜切按钮 */
+html[data-theme="fighter"] {
+  --app-base: #0a0a0a;
+  --app-surface: #151513;
+  --app-raised: #201f1a;
+  --app-line: #2e2c22;
+  --app-ink: #f5f3e7;
+  --app-ink-muted: #9a988a;
+  --app-brand: #ffd400;
+  --app-brand-strong: #ffe75c;
+  --app-onbrand: #111111;
+  --app-accent: #ff4655;
+  --app-radius: 0px;
+  --app-font-display: "Arial Black", "PingFang SC",
+    "Microsoft YaHei", Arial, sans-serif;
+  --app-font-body: "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", system-ui, sans-serif;
+  --app-shadow-card: 6px 6px 0 0 rgba(255, 212, 0, 0.9);
+  --app-shadow-pop: 8px 8px 0 0 var(--app-accent);
+  --app-display-weight: 900;
+  --app-display-leading: 1.1;
+  --app-card-blur: none;
+  color-scheme: dark;
+}
+
+/* 全屏:斜向警示条纹 + 一道巨大的斜切色带 */
+html[data-theme="fighter"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0 38%,
+      rgba(255, 212, 0, 0.05) 38% 40.5%,
+      transparent 40.5% 100%
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 26px,
+      rgba(255, 212, 0, 0.035) 26px 28px
+    );
+}
+
+/* 斜切卡片:对角切角 + 顶部品牌色刃线 */
+html[data-theme="fighter"] .bg-surface {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 16px) 0,
+    100% 16px,
+    100% 100%,
+    16px 100%,
+    0 calc(100% - 16px)
+  );
+  border-top: 3px solid var(--app-brand);
+}
+
+/* 标题:格斗游戏式斜体重型字 */
+html[data-theme="fighter"] h1,
+html[data-theme="fighter"] h2 {
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  text-shadow: 3px 3px 0 rgba(255, 212, 0, 0.35);
+}
+
+/* 按钮:斜切 + 按压 */
+html[data-theme="fighter"] .bg-brand {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% 100%,
+    10px 100%,
+    0 calc(100% - 10px)
+  );
+  font-weight: 800;
+  font-style: italic;
+}
+html[data-theme="fighter"] ::selection {
+  background: var(--app-brand);
+  color: #111;
+}
+
+/* ============ 版式个性:全屏贴边 + 斜切头尾 ============ */
+html[data-theme="fighter"] header {
+  border-bottom: 3px solid var(--app-brand);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 10px),
+    calc(100% - 44px) 100%,
+    0 100%
+  );
+}
+html[data-theme="fighter"] footer {
+  border-top: 3px solid var(--app-accent);
+  clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 10px, 100% 100%, 0 100%);
+}
+/* 全屏版式:标题随视口伸缩 */
+html[data-theme="fighter"] h1 {
+  font-size: clamp(1.9rem, 4.5vw, 3.4rem);
+}

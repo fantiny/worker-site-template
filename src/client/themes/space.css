@@ -1,0 +1,37 @@
+/* 3D 深空:Three.js 全屏场景皮肤
+   场景由 SpaceScene 组件渲染(懒加载),本文件只定义玻璃面板令牌,
+   让 DOM 内容半透明悬浮在 3D 场景之上 */
+html[data-theme="space"] {
+  --app-base: #04050c;
+  --app-surface: rgba(139, 149, 255, 0.07);
+  --app-raised: rgba(139, 149, 255, 0.14);
+  --app-line: rgba(160, 170, 255, 0.2);
+  --app-ink: #eaf0ff;
+  --app-ink-muted: #929cc4;
+  --app-brand: #a78bfa;
+  --app-brand-strong: #c4b5fd;
+  --app-onbrand: #0a0a1f;
+  --app-accent: #22d3ee;
+  --app-radius: 1rem;
+  --app-font-display: "PingFang SC", "Hiragino Sans GB",
+    system-ui, sans-serif;
+  --app-font-body: "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", system-ui, sans-serif;
+  --app-shadow-card: inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 8px 32px rgba(2, 4, 18, 0.5);
+  --app-shadow-pop: 0 12px 48px rgba(167, 139, 250, 0.4);
+  --app-display-weight: 800;
+  --app-display-leading: 1.15;
+  --app-card-blur: blur(14px);
+  color-scheme: dark;
+}
+
+/* 玻璃面板:3D 场景从半透明卡片后透出 */
+html[data-theme="space"] .bg-surface,
+html[data-theme="space"] header {
+  backdrop-filter: var(--app-card-blur);
+  -webkit-backdrop-filter: var(--app-card-blur);
+}
+html[data-theme="space"] ::selection {
+  background: rgba(167, 139, 250, 0.35);
+}

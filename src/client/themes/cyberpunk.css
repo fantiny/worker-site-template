@@ -1,0 +1,164 @@
+/* 赛博 HUD:Cyberpunk 2077
+   深底 + 荧光黄/青 + 切角面板 + 标题故障抖动 + 全屏 HUD 边框 + 网格 */
+html[data-theme="cyberpunk"] {
+  --app-base: #0b0b0e;
+  --app-surface: #15151a;
+  --app-raised: #1c1c22;
+  --app-line: #2e2e38;
+  --app-ink: #e8e6df;
+  --app-ink-muted: #8a8878;
+  --app-brand: #fcee0a;
+  --app-brand-strong: #fff752;
+  --app-onbrand: #0b0b0e;
+  --app-accent: #00f0ff;
+  --app-radius: 0px;
+  --app-font-display: "Rajdhani", "PingFang SC", "Microsoft YaHei",
+    system-ui, sans-serif;
+  --app-font-body: "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", system-ui, sans-serif;
+  --app-shadow-card: inset 0 0 0 1px #2e2e38, 0 0 24px rgba(252, 238, 10, 0.06);
+  --app-shadow-pop: 0 0 32px rgba(0, 240, 255, 0.35);
+  --app-display-weight: 700;
+  --app-display-leading: 1.15;
+  --app-card-blur: none;
+  color-scheme: dark;
+}
+
+/* 全屏:网格 + 扫描线 */
+html[data-theme="cyberpunk"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(252, 238, 10, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(252, 238, 10, 0.03) 1px, transparent 1px),
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 240, 255, 0.025) 0 1px,
+      transparent 1px 4px
+    );
+  background-size:
+    44px 44px,
+    44px 44px,
+    100% 100%;
+}
+
+/* 全屏 HUD 边框:四角括号 + 边缘刻度 */
+html[data-theme="cyberpunk"] body::after {
+  content: "";
+  position: fixed;
+  inset: 10px;
+  z-index: 50;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--app-brand), var(--app-brand)) left 0 top 0 / 26px 2px,
+    linear-gradient(var(--app-brand), var(--app-brand)) left 0 top 0 / 2px 26px,
+    linear-gradient(var(--app-brand), var(--app-brand)) right 0 top 0 / 26px 2px,
+    linear-gradient(var(--app-brand), var(--app-brand)) right 0 top 0 / 2px 26px,
+    linear-gradient(var(--app-brand), var(--app-brand)) left 0 bottom 0 / 26px 2px,
+    linear-gradient(var(--app-brand), var(--app-brand)) left 0 bottom 0 / 2px 26px,
+    linear-gradient(var(--app-accent), var(--app-accent)) right 0 bottom 0 / 26px 2px,
+    linear-gradient(var(--app-accent), var(--app-accent)) right 0 bottom 0 / 2px 26px;
+  background-repeat: no-repeat;
+  opacity: 0.85;
+}
+
+/* 切角面板(CP2077 招牌) */
+html[data-theme="cyberpunk"] .bg-surface {
+  clip-path: polygon(
+    14px 0,
+    100% 0,
+    100% calc(100% - 14px),
+    calc(100% - 14px) 100%,
+    0 100%,
+    0 14px
+  );
+}
+html[data-theme="cyberpunk"] .bg-brand {
+  clip-path: polygon(
+    8px 0,
+    100% 0,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    0 100%,
+    0 8px
+  );
+  font-weight: 700;
+}
+
+/* 标题故障抖动:红青分离 + 位移跳变 */
+@keyframes hud-glitch {
+  0%, 86%, 100% {
+    text-shadow: none;
+    transform: none;
+  }
+  88% {
+    text-shadow: -2px 0 rgba(0, 240, 255, 0.8), 2px 0 rgba(255, 0, 60, 0.8);
+    transform: translate(1px, -1px);
+  }
+  92% {
+    text-shadow: 2px 0 rgba(0, 240, 255, 0.8), -2px 0 rgba(255, 0, 60, 0.8);
+    transform: translate(-1px, 1px);
+  }
+  96% {
+    text-shadow: -1px 0 rgba(0, 240, 255, 0.6), 1px 0 rgba(255, 0, 60, 0.6);
+  }
+}
+html[data-theme="cyberpunk"] h1 {
+  animation: hud-glitch 4.2s steps(1) infinite;
+}
+html[data-theme="cyberpunk"] .text-brand {
+  color: var(--app-brand);
+}
+html[data-theme="cyberpunk"] ::selection {
+  background: var(--app-accent);
+  color: #0b0b0e;
+}
+
+/* ============ 版式个性:左右 HUD 竖轨 + 斜切 header ============ */
+.hud-rail {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  z-index: 30;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  user-select: none;
+  padding: 22px 4px;
+}
+.hud-rail-left {
+  left: 10px;
+  color: rgba(252, 238, 10, 0.45);
+  border-left: 1px solid rgba(252, 238, 10, 0.25);
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0 56px,
+    rgba(252, 238, 10, 0.25) 56px 57px
+  );
+}
+.hud-rail-right {
+  right: 10px;
+  color: rgba(0, 240, 255, 0.45);
+  border-right: 1px solid rgba(0, 240, 255, 0.25);
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0 56px,
+    rgba(0, 240, 255, 0.25) 56px 57px
+  );
+}
+html[data-theme="cyberpunk"] header {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 10px),
+    calc(100% - 28px) 100%,
+    0 100%
+  );
+}
+html[data-theme="cyberpunk"] footer {
+  border-top: 1px solid rgba(0, 240, 255, 0.35);
+}

@@ -1,0 +1,56 @@
+/* 赛博终端:21st.dev Cyberpunk
+   近黑底 + 矩阵绿主色 + 品红点缀 + 全局等宽字体 + 扫描线 + 霓虹光晕 */
+html[data-theme="terminal"] {
+  --app-base: #070907;
+  --app-surface: #0d130d;
+  --app-raised: #122012;
+  --app-line: #1d4a2c;
+  --app-ink: #7df0a8;
+  --app-ink-muted: #4d9463;
+  --app-brand: #22ff88;
+  --app-brand-strong: #7dffb8;
+  --app-onbrand: #02140a;
+  --app-accent: #ff2ea6;
+  --app-radius: 0px;
+  --app-font-display: ui-monospace, "SF Mono", Menlo, Consolas,
+    "PingFang SC", monospace;
+  --app-font-body: ui-monospace, "SF Mono", Menlo, Consolas,
+    "PingFang SC", "Microsoft YaHei", monospace;
+  --app-shadow-card: 0 0 0 1px #1d4a2c, 0 0 24px rgba(34, 255, 136, 0.12);
+  --app-shadow-pop: 0 0 32px rgba(34, 255, 136, 0.3);
+  --app-display-weight: 700;
+  --app-display-leading: 1.2;
+  --app-card-blur: none;
+  color-scheme: dark;
+}
+
+/* 扫描线 + 边缘暗角 */
+html[data-theme="terminal"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(125, 240, 168, 0.04) 0px,
+      rgba(125, 240, 168, 0.04) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(120% 100% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+/* 霓虹文字 */
+html[data-theme="terminal"] h1,
+html[data-theme="terminal"] .text-brand {
+  text-shadow: 0 0 14px rgba(34, 255, 136, 0.45);
+}
+html[data-theme="terminal"] .bg-brand {
+  box-shadow: 0 0 20px rgba(34, 255, 136, 0.35);
+}
+/* 终端窗口风:统一文本Selection */
+html[data-theme="terminal"] ::selection {
+  background: rgba(34, 255, 136, 0.3);
+}

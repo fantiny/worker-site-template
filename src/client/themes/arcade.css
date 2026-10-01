@@ -1,0 +1,105 @@
+/* 糖果街机:Fall Guys
+   亮紫粉糖果色 + 超大圆角 + 按钮漂浮 + 弹性过渡 + 漂浮糖果泡 */
+html[data-theme="arcade"] {
+  --app-base: #f3efff;
+  --app-surface: #ffffff;
+  --app-raised: #efe7ff;
+  --app-line: #e0d5ff;
+  --app-ink: #2d1b4e;
+  --app-ink-muted: #7c6f9c;
+  --app-brand: #7c3aed;
+  --app-brand-strong: #6d28d9;
+  --app-onbrand: #ffffff;
+  --app-accent: #ff6ac2;
+  --app-radius: 1.5rem;
+  --app-font-display: "Baloo 2", "Arial Rounded MT Bold",
+    "PingFang SC", "Hiragino Sans GB", system-ui, sans-serif;
+  --app-font-body: "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", system-ui, sans-serif;
+  --app-shadow-card: 0 4px 0 0 rgba(124, 58, 237, 0.35),
+    0 10px 24px rgba(124, 58, 237, 0.15);
+  --app-shadow-pop: 0 6px 0 0 rgba(255, 106, 194, 0.5),
+    0 14px 32px rgba(124, 58, 237, 0.25);
+  --app-display-weight: 800;
+  --app-display-leading: 1.2;
+  --app-card-blur: none;
+  color-scheme: light;
+}
+
+/* 全屏:漂浮糖果泡 + 彩点 */
+html[data-theme="arcade"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(18rem 14rem at 12% 18%, rgba(124, 58, 237, 0.14), transparent 70%),
+    radial-gradient(20rem 16rem at 88% 30%, rgba(255, 106, 194, 0.16), transparent 70%),
+    radial-gradient(16rem 14rem at 70% 85%, rgba(56, 214, 222, 0.16), transparent 70%),
+    radial-gradient(rgba(124, 58, 237, 0.12) 2px, transparent 2px);
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    34px 34px;
+  animation: candy-drift 16s ease-in-out infinite alternate;
+}
+@keyframes candy-drift {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-14px) rotate(1.5deg);
+  }
+}
+
+/* 按钮:果冻漂浮(Fall Guys 式) */
+@keyframes floaty {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+html[data-theme="arcade"] a.bg-brand,
+html[data-theme="arcade"] button.bg-brand {
+  animation: floaty 3s ease-in-out infinite;
+  border-radius: 999px;
+}
+html[data-theme="arcade"] a.bg-brand:hover,
+html[data-theme="arcade"] button.bg-brand:hover {
+  animation-play-state: paused;
+  transform: scale(1.05);
+}
+
+/* 弹性过渡:全站按钮/卡片 Q 弹 */
+html[data-theme="arcade"] .hover-lift {
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+html[data-theme="arcade"] h1 {
+  transform: rotate(-1deg);
+}
+html[data-theme="arcade"] .bg-raised {
+  border-radius: 999px;
+}
+html[data-theme="arcade"] ::selection {
+  background: rgba(255, 106, 194, 0.35);
+}
+
+/* ============ 版式个性:头尾浮动岛 ============ */
+html[data-theme="arcade"] header {
+  top: 12px;
+  margin: 0 12px;
+  border-radius: 1.5rem;
+  border: 2px solid var(--app-line);
+  box-shadow: var(--app-shadow-card);
+}
+html[data-theme="arcade"] footer {
+  margin: 24px 12px 12px;
+  border-radius: 1.5rem;
+  border: 2px solid var(--app-line);
+  background: var(--app-surface);
+  box-shadow: var(--app-shadow-card);
+}
